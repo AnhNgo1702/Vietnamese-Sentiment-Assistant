@@ -1,5 +1,5 @@
 """
-Test với 10 câu test case theo yêu cầu
+Test với test case yêu cầu
 """
 
 from sentiment_analyzer import SentimentAnalyzer
@@ -12,11 +12,10 @@ def test_10_cases():
     print("VIII. BỘ TEST CASE (10 CÂU)")
     print("=" * 80)
     
-    # Khởi tạo analyzer
     analyzer = SentimentAnalyzer()
     db = SentimentDatabase("data/test_10_cases.db")
     
-    # 10 test cases theo yêu cầu CHÍNH XÁC
+    # 10 test cases theo yêu cầu
     test_cases = [
         {"stt": 1, "text": "Hôm nay tôi rất vui", "expected": "POSITIVE"},
         {"stt": 2, "text": "Món ăn này dở quá", "expected": "NEGATIVE"},
@@ -69,13 +68,13 @@ def test_10_cases():
         print()
     
     print("-" * 100)
-    print(f"\n📊 KẾT QUẢ TỔNG QUAN:")
+    print(f"\n◆ KẾT QUẢ TỔNG QUAN:")
     print(f"   Tổng số test: {total}")
     print(f"   Đúng: {correct} ({correct/total*100:.1f}%)")
     print(f"   Sai: {total - correct} ({(total-correct)/total*100:.1f}%)")
     
     # Hiển thị thống kê từ database
-    print(f"\n📈 THỐNG KÊ DATABASE:")
+    print(f"\n◆ THỐNG KÊ DATABASE:")
     stats = db.get_statistics()
     print(f"   Tổng: {stats['total']}")
     print(f"   Tích cực: {stats['positive']}")
@@ -84,9 +83,9 @@ def test_10_cases():
     
     print("\n" + "=" * 80)
     if correct == total:
-        print("✅ TẤT CẢ TEST CASE ĐỀU PASS!")
+        print("◈ TẤT CẢ TEST CASE ĐỀU PASS!")
     else:
-        print(f"⚠️  CÓ {total - correct} TEST CASE KHÔNG KHỚP KỲ VỌNG")
+        print(f"◇ CÓ {total - correct} TEST CASE KHÔNG KHỚP KỲ VỌNG")
     print("=" * 80 + "\n")
     
     return correct, total
@@ -95,6 +94,6 @@ if __name__ == "__main__":
     try:
         test_10_cases()
     except Exception as e:
-        print(f"\n❌ Lỗi: {e}\n")
+        print(f"\nX Lỗi: {e}\n")
         import traceback
         traceback.print_exc()

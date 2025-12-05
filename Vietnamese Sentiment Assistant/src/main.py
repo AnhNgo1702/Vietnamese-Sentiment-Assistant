@@ -33,7 +33,7 @@ class SentimentApp:
         
         # Kiểm tra lỗi
         if 'error' in result:
-            print(f"\n⚠️  {result['error']}\n")
+            print(f"\n◇ {result['error']}\n")
             return result
         
         # Lưu vào database (Core Engine: Lưu & hiển thị)
@@ -54,11 +54,11 @@ class SentimentApp:
         history = self.db.get_history(limit)
         
         if not history:
-            print("\n📝 Chưa có lịch sử phân loại nào.\n")
+            print("\n◆ Chưa có lịch sử phân loại nào.\n")
             return
         
         total_count = self.db.get_total_count()
-        print(f"\n📜 Hiển thị {len(history)}/{total_count} phân loại gần nhất:\n")
+        print(f"\n◆ Hiển thị {len(history)}/{total_count} phân loại gần nhất:\n")
         print("-" * 80)
         
         for record in history:
@@ -69,21 +69,21 @@ class SentimentApp:
             print("-" * 80)
         
         if total_count > limit:
-            print(f"\n💡 Còn {total_count - limit} bản ghi nữa. Dùng giao diện web để xem thêm.\n")
+            print(f"\n◆ Còn {total_count - limit} bản ghi nữa. Dùng giao diện web để xem thêm.\n")
     
     def show_statistics(self):
         """Hiển thị thống kê"""
         stats = self.db.get_statistics()
         
-        print("\n📊 Thống kê tổng quan:")
+        print("\n◆ Thống kê tổng quan:")
         print(f"  Tổng số phân loại: {stats['total']}")
-        print(f"  Tích cực: {stats['positive']}")
-        print(f"  Trung tính: {stats['neutral']}")
-        print(f"  Tiêu cực: {stats['negative']}\n")
+        print(f"😊 Tích cực: {stats['positive']}")
+        print(f"😞 Trung tính: {stats['neutral']}")
+        print(f"😐 Tiêu cực: {stats['negative']}\n")
     
     def run_interactive(self):
         """Chạy chế độ tương tác"""
-        print("\n💡 Hướng dẫn:")
+        print("\n🤔 Hướng dẫn:")
         print("  - Nhập câu tiếng Việt để phân loại cảm xúc")
         print("  - Gõ 'history' để xem lịch sử")
         print("  - Gõ 'stats' để xem thống kê")
@@ -91,14 +91,14 @@ class SentimentApp:
         
         while True:
             try:
-                text = input("🗣️  Nhập câu: ").strip()
+                text = input("◆ Nhập câu: ").strip()
                 
                 if not text:
                     continue
                 
                 # Xử lý lệnh
                 if text.lower() in ['quit', 'exit', 'thoát']:
-                    print("\n👋 Tạm biệt!\n")
+                    print("\n◈ Tạm biệt!\n")
                     break
                 elif text.lower() in ['history', 'lịch sử']:
                     self.show_history()
@@ -129,10 +129,10 @@ class SentimentApp:
                 print(f"   Output: {{\"text\": \"{result['text']}\", \"sentiment\": \"{result['sentiment']}\"}}\n")
                 
             except KeyboardInterrupt:
-                print("\n\n👋 Tạm biệt!\n")
+                print("\n\n◈ Tạm biệt!\n")
                 break
             except Exception as e:
-                print(f"\n❌ Lỗi: {e}\n")
+                print(f"\n✗ Lỗi: {e}\n")
 
 def main():
     """Hàm main"""
@@ -155,7 +155,7 @@ def main():
             app.run_interactive()
             
     except Exception as e:
-        print(f"\n❌ Lỗi nghiêm trọng: {e}\n")
+        print(f"\n✗ Lỗi nghiêm trọng: {e}\n")
         sys.exit(1)
 
 if __name__ == "__main__":

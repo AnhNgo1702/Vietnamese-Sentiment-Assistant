@@ -1,5 +1,5 @@
 """
-Test cải tiến với keyword boosting
+Test cải tiến
 """
 
 from sentiment_analyzer import SentimentAnalyzer
